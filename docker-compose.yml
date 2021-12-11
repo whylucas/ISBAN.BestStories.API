@@ -1,0 +1,7 @@
+version: '3.1'
+services:
+    api-server:
+        build: .
+        restart: always
+        ports:
+          - 27123:80
