@@ -51,3 +51,6 @@ docker-compose up
 ```
 The application will start and will be exposed at the port configured on `Dockerfile`: 27123.
 Finally, you can navigate to  `localhost:27123/swagger` to see a human friendly interface by [Swagger UI](https://swagger.io/tools/swagger-ui/).
+
+## 4. Access limit per second
+The API has a access limit of 10 request per second to not overload of the Hacker News API. The number of requests and the time limit can be changed on the appsettings.json of the application.
