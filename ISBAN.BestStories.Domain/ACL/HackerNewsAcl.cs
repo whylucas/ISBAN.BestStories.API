@@ -1,13 +1,11 @@
-﻿using ISBAN.BestStories.Domain.Interfaces.ACL;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using Flurl;
+﻿using Flurl;
 using Flurl.Http;
-using Microsoft.Extensions.Configuration;
-using System.Threading.Tasks;
-using System.Text.Json;
+using ISBAN.BestStories.Domain.Interfaces.ACL;
 using ISBAN.BestStories.Domain.Models;
+using Microsoft.Extensions.Configuration;
+using System.Collections.Generic;
+using System.Text.Json;
+using System.Threading.Tasks;
 
 namespace ISBAN.BestStories.Domain.ACL
 {

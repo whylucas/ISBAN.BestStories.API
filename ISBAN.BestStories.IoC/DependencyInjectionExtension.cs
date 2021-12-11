@@ -4,7 +4,6 @@ using ISBAN.BestStories.Domain.Interfaces.Service;
 using ISBAN.BestStories.Domain.Services;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using System;
 
 namespace ISBAN.BestStories.IoC
 {
