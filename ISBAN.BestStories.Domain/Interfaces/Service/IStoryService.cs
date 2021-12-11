@@ -6,6 +6,6 @@ namespace ISBAN.BestStories.Domain.Interfaces.Service
 {
     public interface IStoryService
     {
-        Task<List<Story>> GetBestTwenty();
+        Task<List<StoryResponse>> GetBestTwenty();
     }
 }

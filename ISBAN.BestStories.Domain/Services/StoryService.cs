@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
+using System.Linq;
 
 namespace ISBAN.BestStories.Domain.Services
 {
@@ -19,22 +20,30 @@ namespace ISBAN.BestStories.Domain.Services
             _hackerNewsAcl = hackerNewsAcl;
         }
 
-        public async Task<List<Story>> GetBestTwenty()
+        public async Task<List<StoryResponse>> GetBestTwenty()
         {
-            var result = new List<Story>();
-            Story story = null;
-
-            _logger.LogInformation("Getting best stories.");
-            var bestStories = await _hackerNewsAcl.GetBestStories();
-
-            for (int index = 0; index <= 20; index++)
+            try
             {
-                _logger.LogInformation($"Getting story {bestStories[index]} information.");
-                story = await _hackerNewsAcl.GetStory(bestStories[index]);
-                result.Add(story);
-            }
+                var result = new List<StoryResponse>();
+                Story story = null;
 
-            return result;
+                _logger.LogInformation("Getting best stories.");
+                var bestStories = await _hackerNewsAcl.GetBestStories();
+
+                for (int index = 0; index < 20; index++)
+                {
+                    _logger.LogInformation($"Getting story {bestStories[index]} information.");
+                    story = await _hackerNewsAcl.GetStory(bestStories[index]);
+                    result.Add(new StoryResponse(story));
+                }
+
+                return result;
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error on processing request");
+                throw ex;
+            }
         }
     }
 }
