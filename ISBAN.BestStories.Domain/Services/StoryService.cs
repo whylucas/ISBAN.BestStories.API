@@ -24,11 +24,17 @@ namespace ISBAN.BestStories.Domain.Services
             {
                 var result = new List<StoryResponse>();
                 Story story = null;
+                var maxAmount = 20;
 
                 _logger.LogInformation("Getting best stories.");
                 var bestStories = await _hackerNewsAcl.GetBestStories();
 
-                for (int index = 0; index < 20; index++)
+                if (bestStories.Count < 20)
+                {
+                    maxAmount = bestStories.Count;
+                }
+
+                for (int index = 0; index < maxAmount; index++)
                 {
                     _logger.LogInformation($"Getting story {bestStories[index]} information.");
                     story = await _hackerNewsAcl.GetStory(bestStories[index]);
